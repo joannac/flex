@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project name="ProFlexOnSpring" basedir="." default="main">
+
+    <!-- Change this to easily switch the target project -->
+	<property name="PROJ_NAME" value="dataBindingAsClass" />
+
+	<property name="FLEX_HOME" value="/opt/flex_sdk_3" />
+	<property name="WORK_HOME" value="/home/nano/workspace/flex/proFlexOnSpring" />
+	<property name="SOURCE_DIR" value="${WORK_HOME}/${PROJ_NAME}/src"/>
+	<property name="BINARY_DIR" value="${WORK_HOME}/${PROJ_NAME}/bin" />
+
+	<taskdef resource="flexTasks.tasks" classpath="${FLEX_HOME}/ant/lib/flexTasks.jar"/>
+
+	<target name="init">
+		<delete dir="${BINARY_DIR}" />
+		<mkdir dir="${BINARY_DIR}" />
+	</target>
+
+	<target name="wrapper">
+		<html-wrapper
+		title="Pro Flex on Spring | ${PROJ_NAME}"
+		file="index.html"
+		width="1024"
+		height="768"
+		bgcolor="red"
+		application="app"
+		swf="${PROJ_NAME}"
+		version-major="0"
+		version-minor="9"
+		version-revision="0"
+		history="true"
+		template="express-installation"
+		output="${BINARY_DIR}"/>
+	</target>
+
+	<target name="main" depends="init,wrapper">
+		<mxmlc file="${SOURCE_DIR}/${PROJ_NAME}.mxml"
+		output="${BINARY_DIR}/${PROJ_NAME}.swf"
+		keep-generated-actionscript="true">
+		<load-config
+		filename="${FLEX_HOME}/frameworks/flex-config.xml"/>
+		<source-path path-element="${FLEX_HOME}/frameworks"/>
+		</mxmlc>
+	</target>
+
+</project>

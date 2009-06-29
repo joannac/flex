@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Listing 4-9. Data Binding Through ActionScript Expressions -->
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute"
+horizontalAlign="center" verticalAlign="middle">
+    <!-- Model: for contacts -->
+    <mx:Model id="contacts">
+        <contact>
+            <name>
+                <first>{firstNameInput.text}</first>
+                <last>{lastNameInput.text}</last>
+            </name>
+        </contact>
+    </mx:Model>
+    <!-- View: User Interface components and containers -->
+    <mx:Panel title="Listing 4-9"
+        paddingLeft="10"
+        paddingRight="10"
+        paddingBottom="10"
+        paddingTop="10"
+        horizontalAlign="center">
+        <mx:Form>
+            <mx:FormItem label="First Name" >
+                <mx:TextInput id="firstNameInput"/>
+            </mx:FormItem>
+            <mx:FormItem label="Last Name">
+                <mx:TextInput id="lastNameInput"/>
+            </mx:FormItem>
+            <mx:FormItem label="First Name" >
+                <mx:Label id="firstName"
+                    text="{contacts.name.first}"
+                    fontSize="15"
+                    fontWeight="bold" />
+            </mx:FormItem>
+            <mx:FormItem label="Last Name">
+                <mx:Label id="lastName" 
+                    text="{contacts.name.last}" 
+                    fontSize="15" 
+                    fontWeight="bold" />
+            </mx:FormItem>
+        </mx:Form>
+    </mx:Panel>
+</mx:Application>

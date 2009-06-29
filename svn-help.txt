@@ -1,0 +1,5 @@
+svn checkout https://nanotaboada.svn.beanstalkapp.com/nano/trunk/flex flex
+svn status
+svn update
+svn add *
+svn commit -m "Heck Yesss!"
